@@ -6,19 +6,14 @@ process.execSync("cp style.css dist/style.css");
 
 const template = fs.readFileSync("./template.html", "utf-8");
 
-const devs_ = require("./devs.json");
-const homes_ = require("./homes.json");
-
-devs_.sort(() => Math.random() - 0.5);
-homes_.sort(() => Math.random() - 0.5);
+const shuf = xs => {
+  xs.sort(() => Math.random() - 0.5);
+  return xs;
+};
 
 //// INDEX /////////////////////////////////////////////////////////////////////
 
-let index = "";
-for (const dev of devs) {
-}
-
-index += `TODO`;
+let index = "TODO";
 
 fs.writeFileSync(
   "./dist/index.html",
@@ -39,7 +34,7 @@ fs.writeFileSync(
 //// DEVS //////////////////////////////////////////////////////////////////////
 
 let devs = "";
-for (const dev of devs_) {
+for (const dev of shuf(require("./devs.json"))) {
 }
 
 devs += `TODO`;
@@ -52,7 +47,7 @@ fs.writeFileSync(
 //// homeS //////////////////////////////////////////////////////////////////////
 
 let homes = "";
-for (const home of homes_) {
+for (const home of shuf(require("./homes.json"))) {
 }
 
 homes += `TODO`;
